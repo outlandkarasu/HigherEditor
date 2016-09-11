@@ -158,6 +158,15 @@ Prefab:
       propertyPath: m_NormalizedViewPortRect.x
       value: 0.333
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013186903484, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000011692474824, guid: bedb25f66bfed874c9b248186c52e29a,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
   m_IsPrefabParent: 0
@@ -321,6 +330,15 @@ Prefab:
       propertyPath: m_NormalizedViewPortRect.width
       value: 0.334
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013186903484, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000011692474824, guid: bedb25f66bfed874c9b248186c52e29a,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
   m_IsPrefabParent: 0
@@ -455,6 +473,15 @@ Prefab:
       propertyPath: m_NormalizedViewPortRect.x
       value: 0.333
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013186903484, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000011692474824, guid: bedb25f66bfed874c9b248186c52e29a,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
   m_IsPrefabParent: 0
@@ -545,6 +572,15 @@ Prefab:
       propertyPath: m_BackGroundColor.g
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013186903484, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000011692474824, guid: bedb25f66bfed874c9b248186c52e29a,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
   m_IsPrefabParent: 0
@@ -600,6 +636,15 @@ Prefab:
         type: 2}
       propertyPath: m_NormalizedViewPortRect.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013186903484, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000011692474824, guid: bedb25f66bfed874c9b248186c52e29a,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
@@ -661,6 +706,20 @@ Prefab:
         type: 2}
       propertyPath: m_NormalizedViewPortRect.width
       value: 0.334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013186903484, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000011692474824, guid: bedb25f66bfed874c9b248186c52e29a,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 20000011692474824, guid: bedb25f66bfed874c9b248186c52e29a,
+        type: 2}
+      propertyPath: m_HDR
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bedb25f66bfed874c9b248186c52e29a, type: 2}
