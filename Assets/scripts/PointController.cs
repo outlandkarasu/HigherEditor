@@ -30,7 +30,6 @@ public class PointController : MonoBehaviour
         W = position.w;
     }
 
-
     // 初期化処理
     void Awake()
     {
