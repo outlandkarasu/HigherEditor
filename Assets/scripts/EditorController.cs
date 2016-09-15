@@ -44,8 +44,7 @@ public class EditorController : MonoBehaviour {
         
         // 4次元位置を設定
         Vector4 pos = GetPosition4D(worldPosition, layer);
-        newPoint.transform.position = pos;
-        newPoint.GetComponent<PointController>().W = pos.w;
+        newPoint.GetComponent<PointController>().SetPosition4D(pos);
     }
 
     // 3次元座標とレイヤーから4次元座標を取得する。

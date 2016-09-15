@@ -18,6 +18,19 @@ public class PointController : MonoBehaviour
     // WYZ空間オブジェクト
     private Transform wyz_;
 
+    /// <summary>
+    /// 4次元座標を設定する
+    /// </summary>
+    /// <param name="position"></param>
+    public void SetPosition4D(Vector4 position)
+    {
+        transform.position = position;
+        xyw_.position = new Vector3(position.x, position.y, position.w);
+        wyz_.position = new Vector3(position.w, position.y, position.z);
+        W = position.w;
+    }
+
+
     // 初期化処理
     void Awake()
     {
