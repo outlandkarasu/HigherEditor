@@ -59,9 +59,13 @@ public class EditorController : MonoBehaviour {
         {
             return new Vector4(pos.x, pos.y, 0.0f, pos.z);
         }
-        else
+        else if(layer == wyzLayer_)
         {
             return new Vector4(0.0f, pos.y, pos.z, pos.x);
+        }
+        else
+        {
+            return new Vector4(pos.x, pos.y, pos.z, 0.0f);
         }
     }
 
