@@ -29,18 +29,13 @@ public class PointController : MonoBehaviour
     private Transform xyw_;
     private Transform wyz_;
 
-    // エディターコントローラー
-    private EditorController editorController_;
-
     /// <summary>
     /// 選択されているかどうか返す
     /// </summary>
     public bool IsSelected
     {
-        get
-        {
-            return editorController_.SelectedPoint == this;
-        }
+        get;
+        private set;
     }
 
     /// <summary>
@@ -61,7 +56,6 @@ public class PointController : MonoBehaviour
         xyz_ = transform.Find("XYZ");
         xyw_ = transform.Find("XYW");
         wyz_ = transform.Find("WYZ");
-        editorController_ = GetComponentInParent<EditorController>();
     }
 
     // 毎フレームの処理
@@ -78,6 +72,7 @@ public class PointController : MonoBehaviour
     /// </summary>
     public void OnSelected()
     {
+        IsSelected = true;
         SetMaterial(SelectedMaterial);
     }
 
@@ -86,7 +81,22 @@ public class PointController : MonoBehaviour
     /// </summary>
     public void OnDeselected()
     {
+        IsSelected = false;
         SetMaterial(NormalMaterial);
+    }
+
+    /// <summary>
+    /// 選択時の処理
+    /// </summary>
+    public void OnBeginMove()
+    {
+    }
+
+    /// <summary>
+    /// 非選択時の処理
+    /// </summary>
+    public void OnEndMove()
+    {
     }
 
     // 色を変更する
