@@ -5,7 +5,10 @@ using System;
 /// <summary>
 /// エディターシーンのコントローラー
 /// </summary>
-public class EditorController : MonoBehaviour {
+public class EditorController : MonoBehaviour
+{
+    // クリック箇所のカメラからの距離
+    private const float CLICK_DISTANCE = 1.0f;
 
     /// <summary>
     /// 点オブジェクトのひな型
@@ -21,6 +24,32 @@ public class EditorController : MonoBehaviour {
     private int xyzLayer_;
     private int xywLayer_;
     private int wyzLayer_;
+    
+    // 選択中の点
+    private PointController selectedPoint_;
+
+    /// <summary>
+    /// 選択中の点を返す
+    /// </summary>
+    public PointController SelectedPoint
+    {
+        get { return selectedPoint_; }
+        private set
+        {
+            PointController oldPoint = selectedPoint_;
+            selectedPoint_ = value;
+
+            // イベント発生
+            if (oldPoint != null)
+            {
+                oldPoint.OnDeselected();
+            }
+            if (value != null)
+            {
+                value.OnSelected();
+            }
+        }
+    }
 
     // ドラッグ中の点
     private PointController draggingPoint_;
@@ -39,28 +68,41 @@ public class EditorController : MonoBehaviour {
     /// <summary>
     /// クリック時の処理
     /// </summary>
-    /// <param name="worldPosition">クリックされたワールド座標</param>
+    /// <param name="ray">クリック時のRay</param>
     /// <param name="layer">クリックされたレイヤー</param>
-    public void OnClick(Vector3 worldPosition, int layer)
+    public void OnClick(Ray ray, int layer)
     {
-        // 新しい点の生成
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, float.PositiveInfinity, 1 << layer))
+        {
+            // 点をクリックした場合、選択を切り替える
+            PointController point = hit.transform.GetComponentInParent<PointController>();
+            SelectedPoint = (point == SelectedPoint) ? null : point;
+        }
+        else
+        {
+            // クリック位置に点を生成
+            Vector4 pos = GetPosition4D(ray.GetPoint(CLICK_DISTANCE), layer);
+            GeneratePoint(pos);
+        }
+    }
+
+    // 新しい点を生成する
+    private void GeneratePoint(Vector4 pos)
+    {
         GameObject newPoint = Instantiate<GameObject>(PointPrefab);
-        newPoint.transform.parent = Objects;
-        
-        // 4次元位置を設定
-        Vector4 pos = GetPosition4D(worldPosition, layer);
+        newPoint.transform.SetParent(Objects);
         newPoint.GetComponent<PointController>().SetPosition4D(pos);
     }
 
     /// <summary>
     /// ドラッグ開始時の処理
     /// </summary>
-    /// <param name="point">ドラッグを開始した点オブジェクト</param>
-    /// <param name="distance">カメラから点までの距離</param>
-    internal void OnBeginDrag(PointController point, float distance)
+    /// <param name="hit">ドラッグを開始した点オブジェクトへのRaycastHit</param>
+    internal void OnBeginDrag(RaycastHit hit)
     {
-        draggingPoint_ = point;
-        draggingPointDistance_ = distance;
+        draggingPoint_ = hit.transform.GetComponentInParent<PointController>();
+        draggingPointDistance_ = hit.distance;
     }
 
     /// <summary>

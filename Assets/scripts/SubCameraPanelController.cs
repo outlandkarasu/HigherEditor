@@ -9,9 +9,6 @@ using System;
 public class SubCameraPanelController : MonoBehaviour,
     IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // クリック箇所のカメラからの距離
-    private const float CLICK_DISTANCE = 1.0f;
-
     private Camera camera_;
     private EditorController editorController_;
 
@@ -30,7 +27,7 @@ public class SubCameraPanelController : MonoBehaviour,
     /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
-        editorController_.OnClick(GetEventRay(eventData).GetPoint(CLICK_DISTANCE), gameObject.layer);
+        editorController_.OnClick(GetEventRay(eventData), gameObject.layer);
     }
 
     /// <summary>
@@ -42,11 +39,7 @@ public class SubCameraPanelController : MonoBehaviour,
         RaycastHit hit;
         if (Physics.Raycast(GetEventRay(eventData), out hit, float.PositiveInfinity, CurrentLayerMask))
         {
-            PointController point = hit.transform.GetComponentInParent<PointController>();
-            if (point != null)
-            {
-                editorController_.OnBeginDrag(point, hit.distance);
-            }
+            editorController_.OnBeginDrag(hit);
         }
     }
 
