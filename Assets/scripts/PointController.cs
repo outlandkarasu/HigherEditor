@@ -11,16 +11,49 @@ public class PointController : MonoBehaviour
     /// </summary>
     [TooltipAttribute("W座標")]
     public float W;
+    
+    /// <summary>
+    /// 通常時のマテリアル
+    /// </summary>
+    [TooltipAttribute("通常時のマテリアル")]
+    public Material NormalMaterial;
+    
+    /// <summary>
+    /// 選択時のマテリアル
+    /// </summary>
+    [TooltipAttribute("選択時のマテリアル")]
+    public Material SelectedMaterial;
 
-    // XYW空間オブジェクト
+    // 各空間オブジェクト
+    private Transform xyz_;
     private Transform xyw_;
-
-    // WYZ空間オブジェクト
     private Transform wyz_;
+
+    /// <summary>
+    /// 選択されているかどうか返す
+    /// </summary>
+    public bool IsSelected
+    {
+        get;
+        private set;
+    }
+
+    /// <summary>
+    /// 4次元座標を設定する
+    /// </summary>
+    /// <param name="position"></param>
+    public void SetPosition4D(Vector4 position)
+    {
+        transform.position = position;
+        xyw_.position = new Vector3(position.x, position.y, position.w);
+        wyz_.position = new Vector3(position.w, position.y, position.z);
+        W = position.w;
+    }
 
     // 初期化処理
     void Awake()
     {
+        xyz_ = transform.Find("XYZ");
         xyw_ = transform.Find("XYW");
         wyz_ = transform.Find("WYZ");
     }
@@ -32,5 +65,45 @@ public class PointController : MonoBehaviour
         Vector3 pos = transform.position;
         xyw_.position = new Vector3(pos.x, pos.y, W);
         wyz_.position = new Vector3(W, pos.y, pos.z);
+    }
+
+    /// <summary>
+    /// 選択時の処理
+    /// </summary>
+    public void OnSelected()
+    {
+        IsSelected = true;
+        SetMaterial(SelectedMaterial);
+    }
+
+    /// <summary>
+    /// 非選択時の処理
+    /// </summary>
+    public void OnDeselected()
+    {
+        IsSelected = false;
+        SetMaterial(NormalMaterial);
+    }
+
+    /// <summary>
+    /// 選択時の処理
+    /// </summary>
+    public void OnBeginMove()
+    {
+    }
+
+    /// <summary>
+    /// 非選択時の処理
+    /// </summary>
+    public void OnEndMove()
+    {
+    }
+
+    // 色を変更する
+    private void SetMaterial(Material material)
+    {
+        xyz_.GetComponent<Renderer>().material = material;
+        xyw_.GetComponent<Renderer>().material = material;
+        wyz_.GetComponent<Renderer>().material = material;
     }
 }

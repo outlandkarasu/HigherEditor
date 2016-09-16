@@ -149,7 +149,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 716bf1bafa67c1c4e8fef4766a953ecd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -178,7 +178,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 716bf1bafa67c1c4e8fef4766a953ecd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -207,7 +207,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 716bf1bafa67c1c4e8fef4766a953ecd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -256,6 +256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   W: 0
+  NormalMaterial: {fileID: 2100000, guid: 716bf1bafa67c1c4e8fef4766a953ecd, type: 2}
+  SelectedMaterial: {fileID: 2100000, guid: c8233e381edc75644ac3f13304dc4af5, type: 2}
 --- !u!135 &135000011015951664
 SphereCollider:
   m_ObjectHideFlags: 1
