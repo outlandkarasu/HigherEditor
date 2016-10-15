@@ -11,14 +11,12 @@ public class EditorController : MonoBehaviour
     private const float CLICK_DISTANCE = 1.0f;
 
     /// <summary>
-    /// 点オブジェクトのひな型
+    /// エディタハンドラー
     /// </summary>
-    public GameObject PointPrefab;
+    public IEditorHandler[] Handlers;
 
-    /// <summary>
-    /// 生成される全オブジェクトの親
-    /// </summary>
-    public Transform Objects;
+    // 次のポイントID
+    private int NextPointId_ = 1;
 
     // 各レイヤー番号
     private int xyzLayer_;
@@ -121,16 +119,12 @@ public class EditorController : MonoBehaviour
         {
             // 未選択時、クリック位置に点を生成
             Vector4 pos = GetPosition4D(ray.GetPoint(CLICK_DISTANCE), layer);
-            GeneratePoint(pos);
+            HyperPoint point = new HyperPoint(NextPointId_++, pos);
+            foreach(IEditorHandler handler in Handlers)
+            {
+                handler.OnAddPoint(point);
+            }
         }
-    }
-
-    // 新しい点を生成する
-    private void GeneratePoint(Vector4 pos)
-    {
-        GameObject newPoint = Instantiate<GameObject>(PointPrefab);
-        newPoint.transform.SetParent(Objects);
-        newPoint.GetComponent<PointController>().SetPosition4D(pos);
     }
 
     /// <summary>

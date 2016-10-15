@@ -775,9 +775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e7212b84fb98844a4dd4aefe4fdb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointPrefab: {fileID: 1000010163910056, guid: 7b125c688e6ecb541a6e74fb805da699,
-    type: 2}
-  Objects: {fileID: 1473489780}
 --- !u!1 &1397070491
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,6 +845,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1473489780}
+  - 114: {fileID: 1473489781}
   m_Layer: 0
   m_Name: Objects
   m_TagString: Untagged
@@ -868,6 +866,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1391150620}
   m_RootOrder: 3
+--- !u!114 &1473489781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1473489779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28db58855de9a4e489938b37d68b2d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointPrefab: {fileID: 1000010163910056, guid: 7b125c688e6ecb541a6e74fb805da699,
+    type: 2}
 --- !u!1001 &1690482265
 Prefab:
   m_ObjectHideFlags: 0

@@ -17,6 +17,17 @@ public struct HyperPoint
     public Vector4 Position;
 
     /// <summary>
+    /// ID・位置を指定して生成する。
+    /// </summary>
+    /// <param name="id">ポイントID</param>
+    /// <param name="pos">位置</param>
+    public HyperPoint(int id, Vector4 pos) : this()
+    {
+        this.Id = id;
+        this.Position = pos;
+    }
+
+    /// <summary>
     /// ハッシュ計算を行う。
     /// </summary>
     /// <returns>ハッシュコード</returns>
